@@ -11,7 +11,13 @@
     See the file LICENSE for copying permission.
 """
 
+<<<<<<< Updated upstream
 import getpass
+=======
+import os
+import sys
+
+>>>>>>> Stashed changes
 import logging
 import sys
 
@@ -75,7 +81,7 @@ class IoT_TestDevice(sleekxmpp.ClientXMPP):
         self.send_presence()
         self.get_roster()
         # tell your preffered friend that you are alive
-        self.send_message(mto='jocke@jabber.sust.se', mbody=self.boundjid.bare +' is now online use xep_323 stanza to talk to me')
+        self.send_message(mto='operator@ihijixmpp', mbody=self.boundjid.bare +' is now online use xep_323 stanza to talk to me')
 
         if not(self.beServer):
             session=self['xep_0323'].request_data(self.boundjid.full,self.clientJID,self.datacallback)
