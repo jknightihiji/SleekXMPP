@@ -9,8 +9,11 @@
     See the file LICENSE for copying permission.
 """
 
-from sleekxmpp.plugins.xep_0009.remote import Endpoint, remote, Remote, \
-    ANY_ALL
+from sleekxmpp.plugins.xep_0009.remote import Endpoint
+from sleekxmpp.plugins.xep_0009.remote import remote
+from sleekxmpp.plugins.xep_0009.remote import Remote
+from sleekxmpp.plugins.xep_0009.remote import ANY_ALL
+from sleekxmpp.plugins.xep_0009.remote import ACL
 import threading
 
 class Thermostat(Endpoint):
@@ -42,9 +45,12 @@ class Thermostat(Endpoint):
 
 def main():
 
-    session = Remote.new_session('sleek@xmpp.org/rpc', '*****')
+    session = Remote.new_session('thermostat@ihijixmpp/rpc', '*****')
 
-    thermostat = session.new_handler(ANY_ALL, Thermostat, 18)
+    #thermostat = session.new_handler(ANY_ALL, Thermostat, 18)
+    thermostat = session.new_handler([(ACL.ALLOW, 'operator@ihijixmpp', 'thermostat.set_temperature'),
+                                      (ACL.DENY, '*', '*')],
+                                     Thermostat, 18)
 
     thermostat.wait_for_release()
 

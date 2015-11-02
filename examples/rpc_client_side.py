@@ -39,9 +39,9 @@ class Thermostat(Endpoint):
 
 def main():
 
-    session = Remote.new_session('operator@xmpp.org/rpc', '*****')
+    session = Remote.new_session('operator@ihijixmpp/rpc', '*****')
 
-    thermostat = session.new_proxy('thermostat@xmpp.org/rpc', Thermostat)
+    thermostat = session.new_proxy('thermostat@ihijixmpp/rpc', Thermostat)
 
     print("Current temperature is %s" % thermostat.get_temperature())
 

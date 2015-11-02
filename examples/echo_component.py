@@ -96,10 +96,10 @@ if __name__ == '__main__':
         opts.jid = raw_input("Component JID: ")
     if opts.password is None:
         opts.password = getpass.getpass("Password: ")
-    if opts.server is None:
-        opts.server = raw_input("Server: ")
-    if opts.port is None:
-        opts.port = int(raw_input("Port: "))
+    # if opts.server is None:
+    #     opts.server = raw_input("Server: ")
+    # if opts.port is None:
+    #     opts.port = int(raw_input("Port: "))
 
     # Setup logging.
     logging.basicConfig(level=opts.loglevel,
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     xmpp.registerPlugin('xep_0199') # XMPP Ping
 
     # Connect to the XMPP server and start processing XMPP stanzas.
-    if xmpp.connect():
+    if xmpp.connect(('ihijixmpp', 5222)):
         xmpp.process(block=True)
         print("Done")
     else:
