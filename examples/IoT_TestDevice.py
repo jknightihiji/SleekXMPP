@@ -11,13 +11,10 @@
     See the file LICENSE for copying permission.
 """
 
-<<<<<<< Updated upstream
 import getpass
-=======
 import os
 import sys
 
->>>>>>> Stashed changes
 import logging
 import sys
 
